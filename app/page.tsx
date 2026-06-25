@@ -1,68 +1,57 @@
- export default function Home() {
+ import Sidebar from "./components/Sidebar";
+
+export default function Home() {
   return (
     <div className="min-h-screen flex">
-      {/* Menu lateral */}
-      <aside className="w-64 bg-slate-800 text-white p-6">
-        <h1 className="text-2xl font-bold mb-8">
-          Funilaria App
-        </h1>
-,
-        <nav>
-          <ul className="space-y-4">
-            <li>📊 Dashboard</li>
-            <li>👤 Clientes</li>
-            <li>🚗 Veículos</li>
-            <li>📋 Ordens de Serviço</li>
-            <li>🔧 Produção</li>
-            <li>📈 Relatórios</li>
-          </ul>
-        </nav>
-      </aside>
 
-      {/* Conteúdo principal */}
-       <main className="flex-1 p-8 bg-gray-100">
-  <h2 className="text-3xl font-bold mb-6">
-    Dashboard
-  </h2>
+      <Sidebar />
 
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-gray-500">
-        Veículos em Produção
-      </h3>
-      <p className="text-3xl font-bold">
-        12
-      </p>
-    </div>
+      <main className="flex-1 p-8 bg-gray-100">
+        <h2 className="text-3xl font-bold mb-6">
+          Dashboard
+        </h2>
 
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-gray-500">
-        Em Pintura
-      </h3>
-      <p className="text-3xl font-bold">
-        4
-      </p>
-    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-gray-500">
-        Aguardando Peças
-      </h3>
-      <p className="text-3xl font-bold">
-        3
-      </p>
-    </div>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="text-gray-500">
+              Veículos em Produção
+            </h3>
+            <p className="text-3xl font-bold">
+              12
+            </p>
+          </div>
 
-    <div className="bg-white p-6 rounded-lg shadow">
-      <h3 className="text-gray-500">
-        Veículos Entregues
-      </h3>
-      <p className="text-3xl font-bold">
-        28
-      </p>
-    </div>
-  </div>
-       </main>
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="text-gray-500">
+              Em Pintura
+            </h3>
+            <p className="text-3xl font-bold">
+              4
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="text-gray-500">
+              Aguardando Peças
+            </h3>
+            <p className="text-3xl font-bold">
+              3
+            </p>
+          </div>
+
+          <div className="bg-white p-6 rounded-lg shadow">
+            <h3 className="text-gray-500">
+              Veículos Entregues
+            </h3>
+            <p className="text-3xl font-bold">
+              28
+            </p>
+          </div>
+
+        </div>
+      </main>
+
     </div>
   );
 }
