@@ -1,3 +1,4 @@
+import StatusFlow from "../components/StatusFlow";
 import CheckboxGroup from "../components/CheckboxGroup";
 import SelectField from "../components/SelectField";
 import Sidebar from "../components/Sidebar";
@@ -85,6 +86,10 @@ export default function CadastroVeiculos() {
 
             <InputField label="Previsão de Entrega" type="date" />
           </div>
+
+          <StatusFlow
+  etapaAtual="Aguardando Aprovação"
+/>
 
           <CheckboxGroup
   titulo="📦 Check-list de Entrada"
