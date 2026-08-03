@@ -58,3 +58,51 @@ O projeto apresentou erros como:
 6. Executar `npm run dev`.
 
 Resultado: projeto voltou a funcionar normalmente.
+
+---
+
+## 5. Erro: Event handlers cannot be passed to Client Component props
+
+### Problema
+
+Ao adicionar um botão com `onClick`, o Next.js exibiu o erro:
+
+```
+Event handlers cannot be passed to Client Component props.
+```
+
+### Causa
+
+No Next.js 16, os arquivos `page.tsx` da pasta `app` são, por padrão, **Server Components**.
+
+Server Components não podem utilizar eventos do React, como:
+
+- onClick
+- onChange
+- onSubmit
+
+### Solução
+
+Adicionar no início do arquivo `page.tsx`:
+
+```tsx
+"use client";
+```
+
+Depois:
+
+1. Salvar o arquivo;
+2. Parar o servidor (`Ctrl + C`);
+3. Executar novamente:
+
+```bash
+npm run dev
+```
+
+### Resultado
+
+O botão passou a responder ao clique e exibiu corretamente a mensagem:
+
+```
+✅ Veículo cadastrado com sucesso!
+```

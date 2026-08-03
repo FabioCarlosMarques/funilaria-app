@@ -1,3 +1,5 @@
+"use client";
+
 import StatusFlow from "../components/StatusFlow";
 import CheckboxGroup from "../components/CheckboxGroup";
 import SelectField from "../components/SelectField";
@@ -5,6 +7,9 @@ import Sidebar from "../components/Sidebar";
 import InputField from "../components/InputField";
 
 export default function CadastroVeiculos() {
+  function salvarVeiculo() {
+    alert("✅ Veículo cadastrado com sucesso!");
+  }
   return (
     <div className="min-h-screen flex">
       <Sidebar />
@@ -87,27 +92,34 @@ export default function CadastroVeiculos() {
             <InputField label="Previsão de Entrega" type="date" />
           </div>
 
-          <StatusFlow
-  etapaAtual="Aguardando Aprovação"
-/>
+          <StatusFlow etapaAtual="Aguardando Aprovação" />
 
           <CheckboxGroup
-  titulo="📦 Check-list de Entrada"
-  itens={[
-    "Chave Principal",
-    "Chave Reserva",
-    "Documento",
-    "Manual",
-    "Estepe",
-    "Macaco",
-    "Chave de Roda",
-    "Triângulo",
-    "Rádio",
-    "Multimídia",
-    "Tapetes",
-    "Calotas",
-  ]}
-/>
+            titulo="📦 Check-list de Entrada"
+            itens={[
+              "Chave Principal",
+              "Chave Reserva",
+              "Documento",
+              "Manual",
+              "Estepe",
+              "Macaco",
+              "Chave de Roda",
+              "Triângulo",
+              "Rádio",
+              "Multimídia",
+              "Tapetes",
+              "Calotas",
+            ]}
+          />
+
+          <div className="mt-8 flex justify-end">
+            <button
+              onClick={salvarVeiculo}
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg transition"
+            >
+              💾 Salvar Veículo
+            </button>
+          </div>
         </div>
       </main>
     </div>
