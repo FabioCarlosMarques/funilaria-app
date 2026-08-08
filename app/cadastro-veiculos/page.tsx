@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import StatusFlow from "../components/StatusFlow";
 import CheckboxGroup from "../components/CheckboxGroup";
 import SelectField from "../components/SelectField";
@@ -7,6 +8,7 @@ import Sidebar from "../components/Sidebar";
 import InputField from "../components/InputField";
 
 export default function CadastroVeiculos() {
+  const [cliente, setCliente] = useState("");
   function salvarVeiculo() {
     alert("✅ Veículo cadastrado com sucesso!");
   }
@@ -25,7 +27,11 @@ export default function CadastroVeiculos() {
           <h2 className="text-xl font-bold mb-6">👤 Dados do Cliente</h2>
 
           <div className="grid grid-cols-2 gap-6">
-            <InputField label="Cliente" />
+            <InputField
+              label="Cliente"
+              value={cliente}
+              onChange={(e) => setCliente(e.target.value)}
+            />
 
             <InputField label="Telefone" />
 
