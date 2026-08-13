@@ -8,7 +8,10 @@ import Sidebar from "../components/Sidebar";
 import InputField from "../components/InputField";
 
 export default function CadastroVeiculos() {
-  const [cliente, setCliente] = useState("");
+  const [veiculo, setVeiculo] = useState({
+    cliente: "",
+    placa: "",
+  });
   function salvarVeiculo() {
     alert("✅ Veículo cadastrado com sucesso!");
   }
@@ -29,8 +32,13 @@ export default function CadastroVeiculos() {
           <div className="grid grid-cols-2 gap-6">
             <InputField
               label="Cliente"
-              value={cliente}
-              onChange={(e) => setCliente(e.target.value)}
+              value={veiculo.cliente}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  cliente: e.target.value,
+                })
+              }
             />
 
             <InputField label="Telefone" />
@@ -67,7 +75,16 @@ export default function CadastroVeiculos() {
           <h2 className="text-xl font-bold mb-6">🚗 Dados do Veículo</h2>
 
           <div className="grid grid-cols-2 gap-6">
-            <InputField label="Placa" />
+            <InputField
+              label="Placa"
+              value={veiculo.placa}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  placa: e.target.value,
+                })
+              }
+            />
 
             <InputField label="Marca" />
 

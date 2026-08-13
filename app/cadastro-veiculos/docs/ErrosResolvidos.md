@@ -106,3 +106,12 @@ O botão passou a responder ao clique e exibiu corretamente a mensagem:
 ```
 ✅ Veículo cadastrado com sucesso!
 ```
+Podemos registrar:
+
+6. Aviso: value prop without an onChange handler
+
+Causa: alguns campos recebiam value sem receber onChange.
+
+Solução: modificar o InputField para enviar value e onChange somente quando os dois estiverem disponíveis.
+
+Resultado: os 13 avisos desapareceram e os campos voltaram a funcionar normalmente.
