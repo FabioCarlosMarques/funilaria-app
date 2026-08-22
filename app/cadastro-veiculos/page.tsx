@@ -11,9 +11,16 @@ export default function CadastroVeiculos() {
   const [veiculo, setVeiculo] = useState({
     cliente: "",
     placa: "",
+    marca: "",
+    modelo: "",
+    cor: "",
+    ano: "",
+    km: "",
   });
   function salvarVeiculo() {
-    alert("✅ Veículo cadastrado com sucesso!");
+    alert(
+      `Veículo cadastrado com sucesso!\n\nCliente: ${veiculo.cliente}\nPlaca: ${veiculo.placa}\nMarca: ${veiculo.marca}\nModelo: ${veiculo.modelo}\nCor: ${veiculo.cor}\nAno: ${veiculo.ano}\nKM: ${veiculo.km}`,
+    );
   }
   return (
     <div className="min-h-screen flex">
@@ -86,15 +93,62 @@ export default function CadastroVeiculos() {
               }
             />
 
-            <InputField label="Marca" />
+            <InputField
+              label="Marca"
+              value={veiculo.marca}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  marca: e.target.value,
+                })
+              }
+            />
 
-            <InputField label="Modelo" />
+            <InputField
+              label="Modelo"
+              value={veiculo.modelo}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  modelo: e.target.value,
+                })
+              }
+            />
 
-            <InputField label="Cor" />
+            <InputField
+              label="Cor"
+              value={veiculo.cor}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  cor: e.target.value,
+                })
+              }
+            />
 
-            <InputField label="Ano" type="number" />
+            <InputField
+              label="Ano"
+              type="number"
+              value={veiculo.ano}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  ano: e.target.value,
+                })
+              }
+            />
 
-            <InputField label="KM" type="number" />
+            <InputField
+              label="KM"
+              type="number"
+              value={veiculo.km}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  km: e.target.value,
+                })
+              }
+            />
           </div>
         </div>
 
