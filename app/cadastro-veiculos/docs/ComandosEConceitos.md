@@ -95,3 +95,112 @@ nº 13 — Acessando várias propriedades de um objeto, mostrando justamente com
 veiculo.cliente
 veiculo.placa
 veiculo.marca
+
+function salvarVeiculo() {
+  setVeiculos([...veiculos, veiculo]);
+
+  alert(
+    `Veículo cadastrado com sucesso!\n\nCliente: ${veiculo.cliente}\nPlaca: ${veiculo.placa}\nMarca: ${veiculo.marca}\nModelo: ${veiculo.modelo}\nCor: ${veiculo.cor}\nAno: ${veiculo.ano}\nKM: ${veiculo.km}`
+  );
+}
+
+🧠 O que essa nova linha faz?
+
+Esta é a parte importante:
+    setVeiculos([...veiculos, veiculo]);
+
+Vamos desmontá-la:
+
+1️⃣ setVeiculos
+
+É a função que criamos quando colocamos:
+  const [veiculos, setVeiculos] = useState([]);
+Ela serve para alterar a lista de veículos.
+
+2️⃣ ...veiculos
+Significa:
+
+Mantenha todos os veículos que já estão na lista.
+
+Por exemplo:
+   veiculos
+├── João
+└── Maria
+
+3️⃣ veiculo
+
+É o veículo que acabamos de preencher no formulário.
+
+Então:
+   [...veiculos, veiculo]
+significa:
+
+Pegue todos os veículos que já existem e acrescente este novo veículo no final.
+
+20 — Diferença entre Veiculo e Veiculo[]
+
+   const [veiculo, setVeiculo] = useState<Veiculo>({
+  cliente: "",
+  placa: "",
+  marca: "",
+  modelo: "",
+  cor: "",
+  ano: "",
+  km: "",
+});
+        Veiculo representa um único veículo.
+
+const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+
+    Veiculo[] representa uma lista de veículos.
+
+[] significa que estamos trabalhando com um array/lista.
+
+       🟦 21 — .map() para mostrar uma lista
+
+{veiculos.map((item, index) => (
+  <div key={index}>
+    {item.cliente}
+  </div>
+))}
+     O que faz?
+
+O .map() percorre cada elemento de uma lista e permite criar uma representação visual para cada item.
+
+Se tivermos:
+      veiculos
+├── João
+├── Maria
+└── Carlos
+
+o .map() cria uma representação para cada veículo.
+
+          🟩 22 — .length
+
+veiculos.length
+   Informa quantos itens existem na lista.
+
+Exemplo:
+veiculos.length = 0
+     → nenhum veículo.
+
+veiculos.length = 3
+    → três veículos cadastrados.
+
+          🟨 23 — Operador ternário
+
+Também usamos:
+    condicao ? resultado1 : resultado2
+
+No nosso código:
+    veiculos.length === 0 ? (
+  <p>Nenhum veículo cadastrado.</p>
+) : (
+  ...
+)
+     Significa:
+
+Se não houver veículos, mostre "Nenhum veículo cadastrado". Caso contrário, mostre a lista.
+    
+
+

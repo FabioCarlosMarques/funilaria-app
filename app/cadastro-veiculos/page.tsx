@@ -7,8 +7,18 @@ import SelectField from "../components/SelectField";
 import Sidebar from "../components/Sidebar";
 import InputField from "../components/InputField";
 
+type Veiculo = {
+  cliente: string;
+  placa: string;
+  marca: string;
+  modelo: string;
+  cor: string;
+  ano: string;
+  km: string;
+};
+
 export default function CadastroVeiculos() {
-  const [veiculo, setVeiculo] = useState({
+  const [veiculo, setVeiculo] = useState<Veiculo>({
     cliente: "",
     placa: "",
     marca: "",
@@ -17,7 +27,11 @@ export default function CadastroVeiculos() {
     ano: "",
     km: "",
   });
+
+  const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+
   function salvarVeiculo() {
+    setVeiculos([...veiculos, veiculo]);
     alert(
       `Veículo cadastrado com sucesso!\n\nCliente: ${veiculo.cliente}\nPlaca: ${veiculo.placa}\nMarca: ${veiculo.marca}\nModelo: ${veiculo.modelo}\nCor: ${veiculo.cor}\nAno: ${veiculo.ano}\nKM: ${veiculo.km}`,
     );
@@ -197,6 +211,51 @@ export default function CadastroVeiculos() {
               💾 Salvar Veículo
             </button>
           </div>
+        </div>
+        {/* ========================= */}
+        {/* VEÍCULOS CADASTRADOS */}
+        {/* ========================= */}
+
+        <div className="bg-white rounded-lg shadow p-6 mt-8">
+          <h2 className="text-xl font-bold mb-6">🚗 Veículos Cadastrados</h2>
+
+          {veiculos.length === 0 ? (
+            <p className="text-gray-500">Nenhum veículo cadastrado.</p>
+          ) : (
+            <div className="space-y-4">
+              {veiculos.map((item, index) => (
+                <div key={index} className="border rounded-lg p-4">
+                  <p>
+                    <strong>Cliente:</strong> {item.cliente}
+                  </p>
+
+                  <p>
+                    <strong>Placa:</strong> {item.placa}
+                  </p>
+
+                  <p>
+                    <strong>Marca:</strong> {item.marca}
+                  </p>
+
+                  <p>
+                    <strong>Modelo:</strong> {item.modelo}
+                  </p>
+
+                  <p>
+                    <strong>Cor:</strong> {item.cor}
+                  </p>
+
+                  <p>
+                    <strong>Ano:</strong> {item.ano}
+                  </p>
+
+                  <p>
+                    <strong>KM:</strong> {item.km}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </main>
     </div>
