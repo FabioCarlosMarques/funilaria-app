@@ -115,3 +115,5 @@ Causa: alguns campos recebiam value sem receber onChange.
 Solução: modificar o InputField para enviar value e onChange somente quando os dois estiverem disponíveis.
 
 Resultado: os 13 avisos desapareceram e os campos voltaram a funcionar normalmente.
+
+25 — Hydration Mismatch (lang="en" × lang="pt").

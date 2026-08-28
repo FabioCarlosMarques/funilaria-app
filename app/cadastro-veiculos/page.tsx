@@ -29,6 +29,9 @@ export default function CadastroVeiculos() {
   });
 
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+  const [veiculoSelecionado, setVeiculoSelecionado] = useState<Veiculo | null>(
+    null,
+  );
 
   function salvarVeiculo() {
     setVeiculos([...veiculos, veiculo]);
@@ -222,41 +225,95 @@ export default function CadastroVeiculos() {
           {veiculos.length === 0 ? (
             <p className="text-gray-500">Nenhum veículo cadastrado.</p>
           ) : (
-            <div className="space-y-4">
-              {veiculos.map((item, index) => (
-                <div key={index} className="border rounded-lg p-4">
-                  <p>
-                    <strong>Cliente:</strong> {item.cliente}
-                  </p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-gray-100">
+                    <th className="border p-3 text-left">Placa</th>
+                    <th className="border p-3 text-left">Cliente</th>
+                    <th className="border p-3 text-left">Veículo</th>
+                    <th className="border p-3 text-left">Cor</th>
+                    <th className="border p-3 text-left">Ano</th>
+                    <th className="border p-3 text-left">KM</th>
+                    <th className="border p-3 text-left">Ações</th>
+                  </tr>
+                </thead>
 
-                  <p>
-                    <strong>Placa:</strong> {item.placa}
-                  </p>
+                <tbody>
+                  {veiculos.map((item, index) => (
+                    <tr key={index} className="hover:bg-gray-50">
+                      <td className="border p-3">{item.placa}</td>
 
-                  <p>
-                    <strong>Marca:</strong> {item.marca}
-                  </p>
+                      <td className="border p-3">{item.cliente}</td>
 
-                  <p>
-                    <strong>Modelo:</strong> {item.modelo}
-                  </p>
+                      <td className="border p-3">
+                        {item.marca} {item.modelo}
+                      </td>
 
-                  <p>
-                    <strong>Cor:</strong> {item.cor}
-                  </p>
+                      <td className="border p-3">{item.cor}</td>
 
-                  <p>
-                    <strong>Ano:</strong> {item.ano}
-                  </p>
+                      <td className="border p-3">{item.ano}</td>
 
-                  <p>
-                    <strong>KM:</strong> {item.km}
-                  </p>
-                </div>
-              ))}
+                      <td className="border p-3">{item.km}</td>
+                      <td className="border p-3">
+                        <button
+                          type="button"
+                          onClick={() => setVeiculoSelecionado(item)}
+                          className="bg-blue-600 text-white px-3 py-2 rounded-md hover:bg-blue-700"
+                        >
+                          👁️ Ver
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
+
+        {veiculoSelecionado && (
+          <div className="bg-white rounded-lg shadow p-6 mt-8">
+            <h2 className="text-xl font-bold mb-6">📋 Detalhes do Veículo</h2>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-gray-500">Cliente</p>
+                <p className="font-semibold">{veiculoSelecionado.cliente}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Placa</p>
+                <p className="font-semibold">{veiculoSelecionado.placa}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Marca</p>
+                <p className="font-semibold">{veiculoSelecionado.marca}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Modelo</p>
+                <p className="font-semibold">{veiculoSelecionado.modelo}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Cor</p>
+                <p className="font-semibold">{veiculoSelecionado.cor}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Ano</p>
+                <p className="font-semibold">{veiculoSelecionado.ano}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">KM</p>
+                <p className="font-semibold">{veiculoSelecionado.km}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

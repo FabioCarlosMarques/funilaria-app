@@ -201,6 +201,36 @@ No nosso código:
      Significa:
 
 Se não houver veículos, mostre "Nenhum veículo cadastrado". Caso contrário, mostre a lista.
+
+      24 — Estrutura das tags JSX
+
+As tags JSX precisam ser fechadas na ordem correta. Elementos internos devem ser fechados antes dos elementos externos.
+
+Exemplo:
+     <main>
+  <div>
+    <h2>Título</h2>
+  </div>
+</main>
+
+Esse erro que acabou de acontecer é ótimo para o nosso aprendizado, porque você está começando a reconhecer a estrutura do JSX e entender por que o VS Code coloca aquele vermelho.
     
+    🟦 25 — Elemento <button>
+    <button type="button">
+  👁️ Ver
+</button>
+   
+   O <button> cria um botão clicável na interface.
+    type="button"
+
+    indica que ele é um botão comum, e não um botão de envio de formulário.
+
+Classes como:
+    bg-blue-600
+text-white
+px-3
+py-2
+rounded-md
+    são classes do Tailwind CSS utilizadas para alterar a aparência do botão.
 
 
