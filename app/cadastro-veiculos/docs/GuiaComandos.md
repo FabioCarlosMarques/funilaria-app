@@ -45,3 +45,25 @@ useState
 onClick
 onChange
 eventos de formulário
+
+<main
+  className="flex-1 min-h-screen p-8 bg-cover bg-center bg-fixed"
+  style={{
+    backgroundImage: "url('/oficina-fundo.png')",
+  }}
+>
+
+O que estamos fazendo?
+   bg-cover-> Faz a imagem ocupar todo o espaço disponível.
+
+   bg-center-> Centraliza a imagem.
+
+   bg-fixed-> Mantém o fundo fixo enquanto a página rola.
+
+backgroundImage: "url('/oficina-fundo.png')"
+    diz ao navegador:
+
+"Use a imagem que está dentro da pasta public."
+
+  
+

@@ -43,13 +43,16 @@ export default function CadastroVeiculos() {
     <div className="min-h-screen flex">
       <Sidebar />
 
-      <main className="flex-1 bg-gray-100 p-8">
-        <h1 className="text-3xl font-bold mb-8">Cadastro de Veículos</h1>
-
+      <main
+        className="flex-1 min-h-screen p-8 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: "url('/fundo_funilariaApp.png')",
+        }}
+      >
+        f<h1 className="text-3xl font-bold mb-8">Cadastro de Veículos</h1>
         {/* ========================= */}
         {/* DADOS DO CLIENTE */}
         {/* ========================= */}
-
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h2 className="text-xl font-bold mb-6">👤 Dados do Cliente</h2>
 
@@ -90,11 +93,9 @@ export default function CadastroVeiculos() {
             </div>
           </div>
         </div>
-
         {/* ========================= */}
         {/* DADOS DO VEÍCULO */}
         {/* ========================= */}
-
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h2 className="text-xl font-bold mb-6">🚗 Dados do Veículo</h2>
 
@@ -168,11 +169,9 @@ export default function CadastroVeiculos() {
             />
           </div>
         </div>
-
         {/* ========================= */}
         {/* INFORMAÇÕES DA OFICINA */}
         {/* ========================= */}
-
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-bold mb-6">🏭 Informações da Oficina</h2>
 
@@ -218,7 +217,6 @@ export default function CadastroVeiculos() {
         {/* ========================= */}
         {/* VEÍCULOS CADASTRADOS */}
         {/* ========================= */}
-
         <div className="bg-white rounded-lg shadow p-6 mt-8">
           <h2 className="text-xl font-bold mb-6">🚗 Veículos Cadastrados</h2>
 
@@ -271,7 +269,6 @@ export default function CadastroVeiculos() {
             </div>
           )}
         </div>
-
         {veiculoSelecionado && (
           <div className="bg-white rounded-lg shadow p-6 mt-8">
             <h2 className="text-xl font-bold mb-6">📋 Detalhes do Veículo</h2>

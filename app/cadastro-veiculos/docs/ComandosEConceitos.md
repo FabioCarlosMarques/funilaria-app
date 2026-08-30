@@ -233,4 +233,10 @@ py-2
 rounded-md
     são classes do Tailwind CSS utilizadas para alterar a aparência do botão.
 
+27 — Imagem de fundo com backgroundImage
+   
+   style={{
+  backgroundImage: "url('/oficina-fundo.png')",
+}}
+   Ela permite definir uma imagem como fundo de um elemento.
 
