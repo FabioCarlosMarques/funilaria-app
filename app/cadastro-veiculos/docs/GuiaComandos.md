@@ -49,7 +49,7 @@ eventos de formulário
 <main
   className="flex-1 min-h-screen p-8 bg-cover bg-center bg-fixed"
   style={{
-    backgroundImage: "url('/oficina-fundo.png')",
+    backgroundImage: "url('/fundo_funilariaApp.png')",
   }}
 >
 

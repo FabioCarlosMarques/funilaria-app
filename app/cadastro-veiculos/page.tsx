@@ -15,6 +15,9 @@ type Veiculo = {
   cor: string;
   ano: string;
   km: string;
+  tipoAtendimento: string;
+  status: string;
+  consultor: string;
 };
 
 export default function CadastroVeiculos() {
@@ -26,6 +29,9 @@ export default function CadastroVeiculos() {
     cor: "",
     ano: "",
     km: "",
+    tipoAtendimento: "",
+    status: "",
+    consultor: "",
   });
 
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
@@ -84,6 +90,13 @@ export default function CadastroVeiculos() {
               <SelectField
                 label="Tipo de Atendimento"
                 options={["Seguradora", "Particular", "Loja / Semi-Novo"]}
+                value={veiculo.tipoAtendimento}
+                onChange={(e) =>
+                  setVeiculo({
+                    ...veiculo,
+                    tipoAtendimento: e.target.value,
+                  })
+                }
               />
 
               <SelectField
@@ -176,9 +189,43 @@ export default function CadastroVeiculos() {
           <h2 className="text-xl font-bold mb-6">🏭 Informações da Oficina</h2>
 
           <div className="grid grid-cols-2 gap-6">
-            <InputField label="Status" />
+            <SelectField
+              label="Status"
+              options={[
+                "Aguardando Aprovação",
+                "Aprovado",
+                "Desmontagem",
+                "Levantamento das Peças",
+                "Aguardando Peças",
+                "Funilaria",
+                "Preparação",
+                "Pintura",
+                "Polimento",
+                "Montagem",
+                "Lavagem",
+                "Check-list Final",
+                "Entrega",
+                "Veículo Faturado",
+              ]}
+              value={veiculo.status}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  status: e.target.value,
+                })
+              }
+            />
 
-            <InputField label="Consultor Responsável" />
+            <InputField
+              label="Consultor Responsável"
+              value={veiculo.consultor}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  consultor: e.target.value,
+                })
+              }
+            />
 
             <InputField label="Data de Entrada" type="date" />
 
@@ -307,6 +354,23 @@ export default function CadastroVeiculos() {
               <div>
                 <p className="text-sm text-gray-500">KM</p>
                 <p className="font-semibold">{veiculoSelecionado.km}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Tipo de Atendimento</p>
+                <p className="font-semibold">
+                  {veiculoSelecionado.tipoAtendimento}
+                </p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Status</p>
+                <p className="font-semibold">{veiculoSelecionado.status}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Consultor Responsável</p>
+                <p className="font-semibold">{veiculoSelecionado.consultor}</p>
               </div>
             </div>
           </div>
