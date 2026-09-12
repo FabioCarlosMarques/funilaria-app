@@ -39,6 +39,50 @@ export default function CadastroVeiculos() {
     null,
   );
 
+  const etapas = [
+    "Aguardando Aprovação",
+    "Aprovado",
+    "Desmontagem",
+    "Levantamento das Peças",
+    "Aguardando Peças",
+    "Funilaria",
+    "Preparação",
+    "Pintura",
+    "Polimento",
+    "Montagem",
+    "Lavagem",
+    "Check-list Final",
+    "Entrega",
+    "Veículo Faturado",
+  ];
+
+  const avancarEtapa = () => {
+    if (!veiculoSelecionado) return;
+
+    const indiceAtual = etapas.indexOf(veiculoSelecionado.status);
+
+    if (indiceAtual === -1) return;
+
+    if (indiceAtual < etapas.length - 1) {
+      const proximaEtapa = etapas[indiceAtual + 1];
+
+      const veiculoAtualizado = {
+        ...veiculoSelecionado,
+        status: proximaEtapa,
+      };
+
+      setVeiculoSelecionado(veiculoAtualizado);
+
+      setVeiculos(
+        veiculos.map((item) =>
+          item.placa === veiculoAtualizado.placa
+            ? veiculoAtualizado
+            : item
+        )
+      );
+    }
+  };
+
   function salvarVeiculo() {
     setVeiculos([...veiculos, veiculo]);
     alert(
@@ -372,6 +416,16 @@ export default function CadastroVeiculos() {
                 <p className="text-sm text-gray-500">Consultor Responsável</p>
                 <p className="font-semibold">{veiculoSelecionado.consultor}</p>
               </div>
+
+              <div className="mt-6">
+                <button
+                  onClick={avancarEtapa}
+                  className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700"
+                >
+                  ➡️ Avançar Etapa
+                </button>
+              </div>
+              
             </div>
           </div>
         )}
