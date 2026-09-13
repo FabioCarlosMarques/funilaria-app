@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StatusFlow from "../components/StatusFlow";
 import CheckboxGroup from "../components/CheckboxGroup";
 import SelectField from "../components/SelectField";
@@ -35,6 +35,14 @@ export default function CadastroVeiculos() {
   });
 
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+
+  useEffect(() => {
+    const veiculosSalvos = localStorage.getItem("veiculos");
+
+    if (veiculosSalvos) {
+      setVeiculos(JSON.parse(veiculosSalvos));
+    }
+  }, []);
   const [veiculoSelecionado, setVeiculoSelecionado] = useState<Veiculo | null>(
     null,
   );
@@ -84,7 +92,11 @@ export default function CadastroVeiculos() {
   };
 
   function salvarVeiculo() {
-    setVeiculos([...veiculos, veiculo]);
+    const novosVeiculos = [...veiculos, veiculo];
+
+    setVeiculos(novosVeiculos);
+
+    localStorage.setItem("veiculos", JSON.stringify(novosVeiculos));
     alert(
       `Veículo cadastrado com sucesso!\n\nCliente: ${veiculo.cliente}\nPlaca: ${veiculo.placa}\nMarca: ${veiculo.marca}\nModelo: ${veiculo.modelo}\nCor: ${veiculo.cor}\nAno: ${veiculo.ano}\nKM: ${veiculo.km}`,
     );
