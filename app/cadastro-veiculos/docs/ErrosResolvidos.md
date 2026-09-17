@@ -117,3 +117,20 @@ Solução: modificar o InputField para enviar value e onChange somente quando os
 Resultado: os 13 avisos desapareceram e os campos voltaram a funcionar normalmente.
 
 25 — Hydration Mismatch (lang="en" × lang="pt").
+
+*ERRO: DATA:13/12/26*
+O que aconteceu durante todo o processo
+
+Você tinha:
+
+Uma alteração feita na escola e enviada ao GitHub.
+Duas alterações feitas no computador de casa.
+O Git percebeu que os dois computadores tinham versões diferentes.
+O git push foi bloqueado para evitar sobrescrever alterações.
+Fizemos git fetch.
+Identificamos que os históricos tinham se separado.
+Fizemos git rebase origin/main.
+Resolvemos o conflito em page.tsx.
+O rebase foi concluído.
+Finalmente fizemos:
+git push origin main

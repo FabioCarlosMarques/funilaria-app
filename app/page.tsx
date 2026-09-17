@@ -1,7 +1,34 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import CardDashboard from "./components/CardDashboard";
 
 export default function Home() {
+  const [totalVeiculos, setTotalVeiculos] = useState(0);
+  const [aguardandoAprovacao, setAguardandoAprovacao] = useState(0);
+
+  useEffect(() => {
+    const veiculosSalvos = localStorage.getItem("veiculos");
+
+    if (veiculosSalvos) {
+      const listaVeiculos = JSON.parse(veiculosSalvos);
+
+      const veiculosNoPatio = listaVeiculos.filter(
+        (veiculo: { status: string }) => veiculo.status !== "Veículo Faturado",
+      );
+
+      setTotalVeiculos(veiculosNoPatio.length);
+
+      const veiculosAguardandoAprovacao = listaVeiculos.filter(
+        (veiculo: { status: string }) =>
+          veiculo.status === "Aguardando Aprovação",
+      );
+
+      setAguardandoAprovacao(veiculosAguardandoAprovacao.length);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex">
       <Sidebar />
@@ -11,17 +38,28 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <CardDashboard
-            titulo="Total de Veículos Geral no Pátio"
-            quantidade={120}
+            titulo="Veículos no Pátio"
+            quantidade={totalVeiculos}
           />
 
-          <CardDashboard titulo="Veículos em Produção" quantidade={12} />
+          <CardDashboard
+            titulo="Aguardando Aprovação"
+            quantidade={aguardandoAprovacao}
+          />
 
-          <CardDashboard titulo="Em Pintura" quantidade={4} />
+          <CardDashboard
+            titulo="Veículos em Produção"
+            quantidade={totalVeiculos}
+          />
 
-          <CardDashboard titulo="Aguardando Peças" quantidade={3} />
+          <CardDashboard titulo="Em Pintura" quantidade={totalVeiculos} />
 
-          <CardDashboard titulo="Veículos Entregues" quantidade={28} />
+          <CardDashboard titulo="Aguardando Peças" quantidade={totalVeiculos} />
+
+          <CardDashboard
+            titulo="Veículos Entregues"
+            quantidade={totalVeiculos}
+          />
         </div>
       </main>
     </div>

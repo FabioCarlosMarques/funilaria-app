@@ -79,15 +79,14 @@ export default function CadastroVeiculos() {
         status: proximaEtapa,
       };
 
-      setVeiculoSelecionado(veiculoAtualizado);
-
-      setVeiculos(
-        veiculos.map((item) =>
-          item.placa === veiculoAtualizado.placa
-            ? veiculoAtualizado
-            : item
-        )
+      const novosVeiculos = veiculos.map((item) =>
+        item.placa === veiculoAtualizado.placa ? veiculoAtualizado : item,
       );
+
+      setVeiculoSelecionado(veiculoAtualizado);
+      setVeiculos(novosVeiculos);
+
+      localStorage.setItem("veiculos", JSON.stringify(novosVeiculos));
     }
   };
 
@@ -437,7 +436,6 @@ export default function CadastroVeiculos() {
                   ➡️ Avançar Etapa
                 </button>
               </div>
-              
             </div>
           </div>
         )}
