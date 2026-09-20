@@ -7,6 +7,9 @@ import CardDashboard from "./components/CardDashboard";
 export default function Home() {
   const [totalVeiculos, setTotalVeiculos] = useState(0);
   const [aguardandoAprovacao, setAguardandoAprovacao] = useState(0);
+  const [emProducao, setEmProducao] = useState(0);
+  const [emPintura, setEmPintura] = useState(0);
+  const [AguardandoPeças, setAguardandoPeças] = useState(0);
 
   useEffect(() => {
     const veiculosSalvos = localStorage.getItem("veiculos");
@@ -20,12 +23,44 @@ export default function Home() {
 
       setTotalVeiculos(veiculosNoPatio.length);
 
+      const veiculosEmPintura = listaVeiculos.filter(
+        (veiculo: { status: string }) => veiculo.status === "Pintura",
+      );
+
+      setEmPintura(veiculosEmPintura.length);
+
+      const veiculosAguardandoPeças = listaVeiculos.filter(
+  (veiculo: { status: string }) =>
+    veiculo.status === "Aguardando Peças",
+);
+
+setAguardandoPeças(veiculosAguardandoPeças.length);
+
       const veiculosAguardandoAprovacao = listaVeiculos.filter(
         (veiculo: { status: string }) =>
           veiculo.status === "Aguardando Aprovação",
       );
 
       setAguardandoAprovacao(veiculosAguardandoAprovacao.length);
+
+      const veiculosEmProducao = listaVeiculos.filter(
+        (veiculo: { status: string }) =>
+          [
+            "Desmontagem",
+            "Levantamento das Peças",
+            "Aguardando Peças",
+            "Funilaria",
+            "Preparação",
+            "Pintura",
+            "Polimento",
+            "Montagem",
+            "Lavagem",
+            "Check-list Final",
+            "Entrega",
+          ].includes(veiculo.status),
+      );
+
+      setEmProducao(veiculosEmProducao.length);
     }
   }, []);
 
@@ -49,12 +84,12 @@ export default function Home() {
 
           <CardDashboard
             titulo="Veículos em Produção"
-            quantidade={totalVeiculos}
+            quantidade={emProducao}
           />
 
-          <CardDashboard titulo="Em Pintura" quantidade={totalVeiculos} />
+          <CardDashboard titulo="Em Pintura" quantidade={emPintura} />
 
-          <CardDashboard titulo="Aguardando Peças" quantidade={totalVeiculos} />
+          <CardDashboard titulo="Aguardando Peças" quantidade={AguardandoPeças} />
 
           <CardDashboard
             titulo="Veículos Entregues"

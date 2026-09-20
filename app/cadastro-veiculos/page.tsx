@@ -18,6 +18,7 @@ type Veiculo = {
   tipoAtendimento: string;
   status: string;
   consultor: string;
+  valorOrcamento: string;
 };
 
 export default function CadastroVeiculos() {
@@ -32,6 +33,7 @@ export default function CadastroVeiculos() {
     tipoAtendimento: "",
     status: "",
     consultor: "",
+    valorOrcamento: "",
   });
 
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
@@ -278,6 +280,17 @@ export default function CadastroVeiculos() {
                 setVeiculo({
                   ...veiculo,
                   consultor: e.target.value,
+                })
+              }
+            />
+
+            <InputField
+              label="Valor do Orçamento"
+              value={veiculo.valorOrcamento}
+              onChange={(e) =>
+                setVeiculo({
+                  ...veiculo,
+                  valorOrcamento: e.target.value,
                 })
               }
             />
