@@ -294,6 +294,17 @@ export default function CadastroVeiculos() {
                 })
               }
             />
+            <div>
+              <label className="block text-sm font-medium mb-2">
+                Orçamento em PDF
+              </label>
+
+              <input
+                type="file"
+                accept="application/pdf"
+                className="w-full border rounded-md p-2"
+              />
+            </div>
 
             <InputField label="Data de Entrada" type="date" />
 
@@ -439,6 +450,13 @@ export default function CadastroVeiculos() {
               <div>
                 <p className="text-sm text-gray-500">Consultor Responsável</p>
                 <p className="font-semibold">{veiculoSelecionado.consultor}</p>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500">Valor do Orçamento</p>
+                <p className="font-semibold">
+                  R$ {veiculoSelecionado.valorOrcamento}
+                </p>
               </div>
 
               <div className="mt-6">

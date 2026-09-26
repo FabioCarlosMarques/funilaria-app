@@ -10,6 +10,7 @@ export default function Home() {
   const [emProducao, setEmProducao] = useState(0);
   const [emPintura, setEmPintura] = useState(0);
   const [AguardandoPeças, setAguardandoPeças] = useState(0);
+  const [veiculosEntregues, setVeiculosEntregues] = useState(0);
 
   useEffect(() => {
     const veiculosSalvos = localStorage.getItem("veiculos");
@@ -30,11 +31,10 @@ export default function Home() {
       setEmPintura(veiculosEmPintura.length);
 
       const veiculosAguardandoPeças = listaVeiculos.filter(
-  (veiculo: { status: string }) =>
-    veiculo.status === "Aguardando Peças",
-);
+        (veiculo: { status: string }) => veiculo.status === "Aguardando Peças",
+      );
 
-setAguardandoPeças(veiculosAguardandoPeças.length);
+      setAguardandoPeças(veiculosAguardandoPeças.length);
 
       const veiculosAguardandoAprovacao = listaVeiculos.filter(
         (veiculo: { status: string }) =>
@@ -42,6 +42,12 @@ setAguardandoPeças(veiculosAguardandoPeças.length);
       );
 
       setAguardandoAprovacao(veiculosAguardandoAprovacao.length);
+
+      const listaVeiculosEntregues = listaVeiculos.filter(
+        (veiculo: { status: string }) => veiculo.status === "Veículo Faturado",
+      );
+
+      setVeiculosEntregues(listaVeiculosEntregues.length);
 
       const veiculosEmProducao = listaVeiculos.filter(
         (veiculo: { status: string }) =>
@@ -89,11 +95,14 @@ setAguardandoPeças(veiculosAguardandoPeças.length);
 
           <CardDashboard titulo="Em Pintura" quantidade={emPintura} />
 
-          <CardDashboard titulo="Aguardando Peças" quantidade={AguardandoPeças} />
+          <CardDashboard
+            titulo="Aguardando Peças"
+            quantidade={AguardandoPeças}
+          />
 
           <CardDashboard
             titulo="Veículos Entregues"
-            quantidade={totalVeiculos}
+            quantidade={veiculosEntregues}
           />
         </div>
       </main>
