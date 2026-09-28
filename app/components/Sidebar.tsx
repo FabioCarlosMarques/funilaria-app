@@ -6,7 +6,9 @@ export default function Sidebar() {
 
       <nav>
         <ul className="space-y-4">
-          <li>📊 Dashboard</li>
+          <li>
+            <Link href="/">📊 Dashboard</Link>
+          </li>
           <li>👤 Clientes</li>
           <li>
             <Link href="/cadastro-veiculos">🚗 Veículos</Link>
