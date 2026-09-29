@@ -114,7 +114,11 @@ export default function CadastroVeiculos() {
           backgroundImage: "url('/fundo_funilariaApp.png')",
         }}
       >
-        <h1 className="text-3xl font-bold mb-8">Cadastro de Veículos</h1>
+        <h1 className="text-3xl font-black mb-8 text-[#FF5733] text-center">Cadastro de Veículos</h1>
+
+
+
+
         {/* ========================= */}
         {/* DADOS DO CLIENTE */}
         {/* ========================= */}
