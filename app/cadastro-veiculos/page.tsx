@@ -19,6 +19,7 @@ type Veiculo = {
   status: string;
   consultor: string;
   valorOrcamento: string;
+  nomeOrcamentoPdf: string;
 };
 
 export default function CadastroVeiculos() {
@@ -34,6 +35,7 @@ export default function CadastroVeiculos() {
     status: "",
     consultor: "",
     valorOrcamento: "",
+    nomeOrcamentoPdf: "",
   });
 
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
@@ -112,7 +114,7 @@ export default function CadastroVeiculos() {
           backgroundImage: "url('/fundo_funilariaApp.png')",
         }}
       >
-        f<h1 className="text-3xl font-bold mb-8">Cadastro de Veículos</h1>
+        <h1 className="text-3xl font-bold mb-8">Cadastro de Veículos</h1>
         {/* ========================= */}
         {/* DADOS DO CLIENTE */}
         {/* ========================= */}
@@ -303,6 +305,16 @@ export default function CadastroVeiculos() {
                 type="file"
                 accept="application/pdf"
                 className="w-full border rounded-md p-2"
+                onChange={(e) => {
+                  const arquivo = e.target.files?.[0];
+
+                  if (arquivo) {
+                    setVeiculo({
+                      ...veiculo,
+                      nomeOrcamentoPdf: arquivo.name,
+                    });
+                  }
+                }}
               />
             </div>
 
@@ -456,6 +468,12 @@ export default function CadastroVeiculos() {
                 <p className="text-sm text-gray-500">Valor do Orçamento</p>
                 <p className="font-semibold">
                   R$ {veiculoSelecionado.valorOrcamento}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-gray-500">Orçamento em PDF</p>
+                <p className="font-semibold">
+                  {veiculoSelecionado.nomeOrcamentoPdf || "Nenhum PDF anexado"}
                 </p>
               </div>
 
