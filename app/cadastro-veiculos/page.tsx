@@ -115,10 +115,7 @@ export default function CadastroVeiculos() {
         }}
       >
         <h1 className="text-3xl font-black mb-8 text-[#FF5733] text-center">Cadastro de Veículos</h1>
-
-
-
-
+        
         {/* ========================= */}
         {/* DADOS DO CLIENTE */}
         {/* ========================= */}
